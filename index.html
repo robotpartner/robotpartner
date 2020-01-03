@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <div class="site-title" style="height:100px;background: url('image001.gif') no-repeat left; "></div>
+        </div>
+
+    </div>
+</head>
+<script language="JavaScript">
+
+    var caution = false
+    function setCookie(name, value, expires, path, domain, secure) {
+        var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "")
+        if (!caution || (name + "=" + escape(value)).length <= 4000)
+            document.cookie = curCookie
+        else if (confirm("Cookie exceeds 4KB and will be cut!"))
+            document.cookie = curCookie
+    }
+    function getCookie(name) {
+        var prefix = name + "="
+        var cookieStartIndex = document.cookie.indexOf(prefix)
+        if (cookieStartIndex == -1)
+            return null
+        var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
+        if (cookieEndIndex == -1)
+            cookieEndIndex = document.cookie.length
+        return unescape(document.cookie.substring(cookieStartIndex + prefix.length,
+            cookieEndIndex))
+    }
+    function deleteCookie(name, path, domain) {
+        if (getCookie(name)) {
+            document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT"
+        }
+    }
+    function fixDate(date) {
+        var base = new Date(0)
+        var skew = base.getTime()
+        if (skew > 0)
+            date.setTime(date.getTime() - skew)
+    }
+    var now = new Date()
+    fixDate(now)
+    now.setTime(now.getTime() + 730 * 24 * 60 * 60 * 1000)
+    var visits = getCookie("counter")
+    if (!visits)
+        visits = 1
+    else
+        visits = parseInt(visits) + 1
+    setCookie("counter", visits, now)
+    document.write("<div style='float:right'><font size=1 color=red>今日访问数：" + visits + "</div>")
+// -->
+</script>
+<style type="text/css">
+    body {
+        background-color: #fff;
+        border-top: solid 0px #000;
+        color: #333;
+        font-size: .85em;
+        font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+        height: 100%;
+        min-height: 100%;
+    }
+    a {
+        text-decoration: none;
+    }
+    .content-wrapper {
+        margin: 0px 100px 0px 100px;
+        height:100%;
+        /*    max-width: 960px;*/
+    }
+    #body {
+        background-color: #efeeef;
+        clear: both;
+        padding-bottom: 35px;
+        height: auto;
+    }
+    #searchResultDiv .tile {
+        width: 330px !important;
+        height: 120px !important;
+        cursor: auto;
+    }
+
+    #searchResultDiv .appName {
+        font-family: Arial;
+        font-size: 25px;
+        font-weight: bold;
+        color: #333;
+        padding-bottom: 0px;
+        overflow: hidden;
+    }
+
+
+    #searchResultDiv .workflowContent {
+        line-height: 14px;
+        padding: 0 70px 0 15px;
+        /*color: #aaa;*/
+        font-family: Arial;
+        font-size: 12px;
+    }
+
+    .page-sidebar-closed, .page-container, .page-content {
+        height: auto;
+        padding-left:20px;
+    }
+
+    .tile {
+        border: 0 !important;
+        margin: 0 !important;
+        cursor: auto;
+    }
+
+    .tile {
+        display: block;
+        letter-spacing: 0.02em;
+        float: left;
+        height: 135px;
+        width: 135px !important;
+        cursor: pointer;
+        text-decoration: none;
+        color: #ffffff;
+        position: relative;
+        font-weight: 300;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        line-height: 20px;
+        font-smooth: always;
+        overflow: hidden;
+        border: 4px solid transparent;
+        margin: 0 10px 10px 0;
+    }
+
+    #searchResultDiv .workflowName {
+        font-family: Arial;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        /*white-space: nowrap;*/
+        color: #333;
+        padding: 10px 30px 10px 15px;
+        font-family: Arial;
+        /*line-height: 15px;*/
+        font-size: 20px;
+    }
+
+    #partTitle {
+        height: 100%;
+    }
+
+    #searchResultDiv .workflowInfo {
+        cursor: pointer;
+        border-top: 1px solid #ddd;
+        height: 110px;
+        width: 320px;
+        position: relative;
+        background-color: #fff;
+    }
+</style>
+<body>
+    <div id="body">
+        <div class="page-sidebar-closed" style="background-color:#EFEEEF; min-width: 1089px;">
+            <div class="page-container" style="position:relative;overflow-x:hidden;">
+                <div class="page-content">
+                    <div id="searchPage" style="padding: 20px 10px 10px 20px;">
+                        <div id="partTitle" style="float:left;font-size: 36px; font-family: Arial; color:#333333;"></div>
+                        <div style="padding-bottom:0px;">
+                        </div>
+                        <div id="searchResultDiv">
+                            <div id="sales" style="overflow:hidden">
+                                <div class="appName">视频教学</div>
+                                <div style="padding-bottom:10px">
+                                    <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#987cb9 size=3>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://jqr.ke.qq.com" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                在线课堂<i class="icon-bookmark unfav"></i>
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="tile">
+                                    <a href="http://ke.qq.com/course/105658#term_id=100111446" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #8AD05F">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                工业机器人入门<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="tile">
+                                    <a href="http://ke.qq.com/course/92285#term_id=100092842" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                工业机器人进阶<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent" style="font-weight: bold">
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div id="VPteam" style="overflow:hidden">
+
+                                <div class="appName">在线资料</div>
+                                <div style="padding-bottom:10px">
+                                    <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#987cb9 size=3>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1o8CPuhs" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                RobotStudio5.15<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1bpkLzT9" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #8AD05F">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                RobotStudio5.6<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="https://pan.baidu.com/s/1pBQonJkR9hG09Ja7ov8fYw" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                RobotStudio6.08<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1dDuHRu5" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #8AD05F">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                周期保养<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1boW8wWJ" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                更多<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+                                                   密码：atcf
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="VPteam" style="overflow:hidden">
+                                <div class="appName">配套资料</div>
+                                <div style="padding-bottom:10px">
+                                    <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#987cb9 size=3>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1o6Hov0m" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #8AD05F">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                工业机器人实操与应用技巧<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1mg2vc72" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                工业机器人典型应用案例精析<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://pan.baidu.com/s/1jG7KTca" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #8AD05F">
+                                            <div class="workflowName" style="font-weight: bold; word-wrap: break-word;word-break:break-all">
+                                                工业机器人工程应用虚拟仿真教程<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="tile">
+                                    <a href="http://search.dangdang.com/?key=%B9%A4%D2%B5%BB%FA%C6%F7%C8%CB+%D2%B6%EA%CD&filter=0|0|0|0|0|1|" target="_blank">
+                                        <div class="workflowInfo" style="background-color: #A3E1F9">
+                                            <div class="workflowName" style="font-weight: bold;">
+                                                购买全套教材<i class="icon-bookmark unfav"></i>
+                                                <br>
+                                                <br />
+                                            </div>
+                                            <div class="workflowContent">
+
+                                            </div><i class="icon-unlock"></i><i class="icon-info-sign"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="padding-bottom:10px">
+                                <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" color=#987cb9 size=3>
+                            </div>
+                            <div id="VPteam" style="overflow: hidden">
+
+
+                                <div style="height: 300px; display: block; position: relative; float: left; text-align: center">
+                                    <div class="workflowName" style="font-weight: bold">
+                                        微信公众号
+                                    </div>
+                                    <div class="workflowInfo" style="background: url('wechat.jpg') no-repeat left; height: 280px; width: 260px">
+                                    </div>
+                                </div>
+
+                                
+                                <div style="margin-left:10%;display: block; position: relative; float: left;text-align:center">
+                                   
+                                </div>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                    <div id="detailDescription" style="padding: 25px 20px 20px 20px;font-family:Arial;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
